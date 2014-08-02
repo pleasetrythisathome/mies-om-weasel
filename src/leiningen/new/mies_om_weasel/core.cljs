@@ -1,12 +1,18 @@
 (ns {{name}}.core
   (:require-macros [cljs.core.match.macros :refer [match]]
                    [cljs.core.async.macros :as asyncm :refer [go go-loop]])
-  (:require [om.core :as om :include-macros true]
+  (:require [cljs.core.match]
+            [cljs.core.async :as async :refer [<! >! put! chan close! timeout alts!]]
+
+            [om.core :as om :include-macros true]
             [om.dom :as dom :include-macros true]
+            [sablono.core :as html :refer-macros [html]]
+
+            [goog.dom :as gdom]
+
             [weasel.repl :as repl]
-            [cljs.core.match]
-            [cljs.core.async :as async :refer [<! >! put! chan]]
-            [{{name}}.websocket :refer [chsk ch-chsk chsk-send! chsk-state]]))
+            [shodan.console :as console :include-macros true]
+            [omdev.core :as omdev]))
 
 (enable-console-print!)
 

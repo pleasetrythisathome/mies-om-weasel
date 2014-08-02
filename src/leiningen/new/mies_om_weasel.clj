@@ -5,10 +5,18 @@
 (def render (renderer "mies-om-weasel"))
 
 (defn mies-om-weasel
-  "FIXME: write documentation"
+  "minimal om template with a weasel repl"
   [name]
   (let [data {:name name
               :sanitized (name-to-path name)}]
     (main/info "Generating fresh 'lein new' mies-om-weasel project.")
+
     (->files data
-             ["src/{{sanitized}}/foo.clj" (render "foo.clj" data)])))
+             ["project.clj" (render "project.clj" data)]
+             ["profiles.clj" (render "profiles.clj" data)]
+
+             ["resources/public/index.html" (render "index.html" data)]
+             ["src/{{sanitized}}/core.cljs" (render "core.cljs" data)]
+
+             ["README.md" (render "README.md" data)]
+             [".gitignore" (render "gitignore" data)])))

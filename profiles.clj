@@ -5,21 +5,21 @@
        {:builds [{:id "test"
                   :source-paths ["src" "test"]
                   :compiler {:output-dir "resources/public/out/test"
-                             :output-to "resources/public/test.js"
-                             :source-map "resources/public/test.js.map"
+                             :output-to "resources/public/js/test.js"
+                             :source-map true
                              :pretty-print true
                              :optimizations :none}}
                  {:id "dev"
                   :source-paths ["src"]
                   :compiler {:output-dir "resources/public/out/dev"
-                             :output-to "resources/public/dev.js"
-                             :source-map "resources/public/dev.js.map"
+                             :output-to "resources/public/js/dev.js"
+                             :source-map true
                              :pretty-print true
                              :optimizations :none}}
                  {:id "prod"
                   :source-paths ["src"]
                   :compiler {:output-dir "resources/public/out/prod"
-                             :output-to "resources/public/prod.js"
+                             :output-to "resources/public/js/prod.js"
                              :optimizations :advanced
                              :pretty-print false
                              :preamble ["react/react.min.js"]

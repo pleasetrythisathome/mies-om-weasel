@@ -20,10 +20,35 @@
 (when-not (repl/alive?)
   (repl/connect "ws://localhost:9001" :verbose true))
 
-(def app-state (atom {:text "Hello world!"}))
+(declare app-container
+         app-state)
 
-(om/root
-  (fn [app owner]
-    (dom/h1 nil (:text app)))
-  app-state
-  {:target (. js/document (getElementById "app"))})
+(defn app-view
+  "the main app view"
+  [owner app]
+  (reify
+    om/IRender
+    (render [_]
+      (html
+       [:h1 (:text app)]))))
+
+(defn render
+  "Renders the app to the DOM.
+  Can safely be called repeatedly to rerender the app."
+  []
+  (om/root app-view
+           app-state
+           {:target app-container}))
+
+(defn init
+  "Initializes the app.
+  Should only be called once on page load."
+  [app-id state]
+  (->> app-id
+       gdom/getElement
+       (set! app-container))
+  (->> state
+       (set! app-state))
+  (render))
+
+(init "app" {:text "Hello world!"})

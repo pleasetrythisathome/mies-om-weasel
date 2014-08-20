@@ -23,6 +23,13 @@
                              :preamble ["react/react.min.js"]
                              :externs ["react/externs/react.js"]}}]}
 
+       :aliases {"auto-test" ["do" "clean,"
+                              "cljsbuild" "once" "test,"
+                              "cljsbuild" "auto" "test"]
+                 "auto-dev" ["do" "clean,"
+                             "cljsbuild" "once" "dev,"
+                             "cljsbuild" "auto" "dev"]}
+
        :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
        :injections [(require  '[weasel.repl.websocket :as weasel]

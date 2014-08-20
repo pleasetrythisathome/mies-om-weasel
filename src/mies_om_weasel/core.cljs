@@ -1,4 +1,4 @@
-(ns {{name}}.core
+(ns mies-om-weasel.core
   (:require-macros [cljs.core.match.macros :refer [match]]
                    [cljs.core.async.macros :as asyncm :refer [go go-loop]])
   (:require [cljs.core.match]

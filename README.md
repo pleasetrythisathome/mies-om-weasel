@@ -1,14 +1,12 @@
-# mies-om-weasel
+mies-om-weasel
+An Om project designed to ... well, that part is up to you.
 
-A Leiningen template for FIXME.
-
-## Usage
+Usage
 
 FIXME
 
-## License
+License
 
-Copyright © 2014 FIXME
+Copyright :copyright:  FIXME
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.

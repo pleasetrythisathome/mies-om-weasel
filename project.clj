@@ -11,6 +11,7 @@
                  ;; om
                  [om "0.7.1"]
                  [sablono "0.2.21"]
+                 [crate "0.2.5"]
                  [prismatic/om-tools "0.3.2"]
                  [secretary "1.2.0"]
                  [pleasetrythisathome/tao "0.1.5"]
@@ -19,9 +20,15 @@
                  ;; dev tools
                  [omdev "0.1.3-SNAPSHOT"]
                  [shodan "0.3.0"]
-                 [ankha "0.1.4"]]
+                 [ankha "0.1.4"]
+                 [figwheel "0.1.4-SNAPSHOT"]]
 
   :plugins [[lein-cljsbuild "1.0.3"]
-            [com.cemerick/clojurescript.test "0.3.1"]]
+            [com.cemerick/clojurescript.test "0.3.1"]
+            [lein-figwheel "0.1.4-SNAPSHOT"]]
   :hooks [leiningen.cljsbuild]
-  :source-paths ["src"])
+  :source-paths ["src"]
+
+  :figwheel {:http-server-root "public"
+             :server-port 3449
+             :css-dirs ["public/resources/css"]})

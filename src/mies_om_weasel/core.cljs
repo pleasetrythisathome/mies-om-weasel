@@ -12,7 +12,9 @@
 
             [weasel.repl :as repl]
             [shodan.console :as console :include-macros true]
-            [omdev.core :as omdev]))
+            [omdev.core :as omdev]
+
+            [figwheel.client :as fw]))
 
 (enable-console-print!)
 
@@ -20,8 +22,8 @@
 (when-not (repl/alive?)
   (repl/connect "ws://localhost:9001" :verbose true))
 
-(declare app-container
-         app-state)
+(defonce app-container (gdom/getElement "app"))
+(defonce app-state {:text "Hello world!"})
 
 (defn app-view
   "the root application component"
@@ -41,15 +43,9 @@
              app-state
              {:target app-container})))
 
-(defn init
-  "Initializes the app.
-  Should only be called once on page load."
-  [app-id state]
-  (->> app-id
-       gdom/getElement
-       (set! app-container))
-  (->> state
-       (set! app-state))
-  (render))
+(render)
 
-(init "app" {:text "Hello world!"})
+(fw/watch-and-reload
+ :jsload-callback (fn []
+                    ;; (stop-and-start-my app)
+                    ))

@@ -24,8 +24,8 @@
          app-state)
 
 (defn app-view
-  "the main app view"
-  [owner app]
+  "the root application component"
+  [app owner]
   (reify
     om/IRender
     (render [_]
@@ -36,9 +36,10 @@
   "Renders the app to the DOM.
   Can safely be called repeatedly to rerender the app."
   []
-  (om/root app-view
-           app-state
-           {:target app-container}))
+  (when app-container
+    (om/root app-view
+             app-state
+             {:target app-container})))
 
 (defn init
   "Initializes the app.

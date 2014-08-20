@@ -21,6 +21,7 @@
                  [shodan "0.3.0"]
                  [ankha "0.1.4"]]
 
-  :plugins [[lein-cljsbuild "1.0.3"]]
+  :plugins [[lein-cljsbuild "1.0.3"]
+            [com.cemerick/clojurescript.test "0.3.1"]]
   :hooks [leiningen.cljsbuild]
   :source-paths ["src"])
